@@ -2,22 +2,62 @@
 <html>
 
 <head>
-    <title>98.css example</title>
+    <title>Home Page</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
+    <link rel="stylesheet" href="main.css">
+    <link rel="Shortcut Icon" type="image/x-icon" href="CFKlogo.png" />
 </head>
 
 <body>
-    <div class="window" style="margin: 32px; width: 250px">
-        <div class="title-bar">
-            <div class="title-bar-text">
-                My First VB4 Program
+    <aside>
+        <ul class="tree-view">
+            <li>My Pages
+                <ul>
+                    <li> <a href="sliding-tile-puzzle/sliding-tile-puzzle.html"><b> Sliding Tile Puzzle Algorithm
+                            </b></a> </li>
+                </ul>
+            </li>
+
+
+        </ul>
+    </aside>
+
+    <main>
+        <div id="intro" class="window" style="margin: 32px; width: 250px; float: right; ">
+            <div class="title-bar">
+                <div class="title-bar-text">
+                    Some Information
+                </div>
+            </div>
+            <div class="window-body">
+                <p>I am a programmer from the Netherlands.</p>
             </div>
         </div>
-        <div class="window-body">
-            <p>Hello, world!</p>
-        </div>
-    </div>
+        <h1>CFKaligula
+        </h1>
+        <hr>
+
+
+
+        <h2>My Articles</h2>
+
+        <p>
+            I might write some fun articles about interesting stuff I find here.
+        </p>
+
+        <h3>Solving any Sliding Tile Puzzle</h3>
+        <p>
+            I once tried to solve a sliding tile puzzle and wanted to know if there was a reliable way to either move a
+            piece where you want without messing up the positions of other pieces, or just a general way to solve them.
+            I only managed to find the second one, but this general technique for solving a sliding tile puzzle does
+            work in such a way that the pieces don't interfere with each other, so my first quest was also completed
+            somewhat. I found the way the technique was described a bit inefficient and messy so I tried to write an
+            explanation in my own manner. You can read it <a
+                href="sliding-tile-puzzle/sliding-tile-puzzle.html">here</a>.
+        </p>
+
+    </main>
 </body>
 
 </html>

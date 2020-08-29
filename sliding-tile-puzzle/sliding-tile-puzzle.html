@@ -1,0 +1,298 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sliding Tile Puzzle</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://unpkg.com/98.css" />
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="sliding-tile-puzzle.css">
+    <link rel="Shortcut Icon" type="image/x-icon" href="CFKlogo.png" />
+</head>
+
+<body>
+    <aside>
+        <ul class="tree-view">
+            <li><a href="index.html"><b> Home Page</b></a></li>
+            <li> <b> This Page</b>
+                <ul>
+                    <li><a href="#intro">Intro</a></li>
+                    <li><a href="#algorithm">Algorithm</a>
+                        <ul>
+                            <li><a href="#part1">Part 1: Top Row</a></li>
+                            <li><a href="#part2">Part 2: Leftmost Column</a></li>
+                            <li><a href="#part3">Part 3: Finishing Up</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </aside>
+
+    <main>
+        <h1> Sliding Tile Puzzle Algorithm</h1>
+        <hr>
+
+        <h2 id="intro">Intro</h2>
+        <hr>
+
+        <p> While playing a sliding tile puzzle I was annoyed how I couldn't find a simple way to solve it, or move any
+            piece where I want without messing up the other ones. So as many people do I went to the Internet to see how
+            to properly solve one.
+            <a href="https://www.kopf.com.br/kaplof/how-to-solve-any-slide-puzzle-regardless-of-its-size/"> The first
+                article I found </a> did actually teach the right method, though I feel like it could be described
+            neater, so that is why I created this page. Another reason I wanted to make this website was to try out the
+            <a href="https://jdan.github.io/98.css/#window">98.css</a> framework, since it looks really cool.
+        </p>
+
+        <h2 id="algorithm">The algorithm</h2>
+        <hr>
+
+        <p> What I like most about this algorithm is how elegant it is. It works for any size, because how it works is
+            that it keeps making the puzzle smaller, so it basically reduces a N×N puzzle to an N-1×N-1 puzzle, until N
+            reaches 1. The original source called this a "Divide and Conquer" technique, while I would say the term
+            "Recursion" captures the algorithm a lot better. The basic way the algorithm works is by solving the
+            top row, then the left row, which removes a row and a column each of
+            the puzzle, after which we repeat these 2 steps.</p>
+        <p>
+            The hard part is then how to easily solve the top row and leftmost column. I will show you how to solve
+            these with the steps shown below. Each step I will give an example slide puzzle where in yellow is the tile
+            that has been moved in that step to the position in that step. The blank tiles are tiles that can be any
+            number still. First we solve the top row:
+        </p>
+
+        <h3 id="part1"> Part 1: Solving the Top Row</h3>
+        <p>The hardest part of solving a tile puzzle is of course that moving a tile interferes with other tiles.
+            Luckily such a problem only crops up in this algorithm after finish almost an entire row. </p>
+
+
+        <div class="window" style="margin: 32px; width: 60rem">
+            <div class="title-bar">
+                <div class="title-bar-text">Sliding Puzzle Algorithm: Solving The Top Row.</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <ol>
+                    <li>
+                        <pre> Solve the top row apart from the 2 right-most tiles.</pre>
+                        <table>
+                            <tr>
+                                <td class="filled_cell">1</td>
+                                <td>▯</td>
+                                <td>▯</td>
+                            </tr>
+                            <tr>
+                                <td>▯</td>
+                                <td>▯</td>
+                                <td>▯</td>
+                            </tr>
+                            <tr>
+                                <td>▯</td>
+                                <td>▯</td>
+                                <td>▯</td>
+                            </tr>
+                        </table>
+                    </li>
+
+                    <li>
+                        <pre> <b>If</b> the top-right tile is in the top row, move it a row lower and make sure it doesn't move to the top row again during the next step.</pre>
+                    </li>
+
+
+                    <li>
+                        <pre> Move the second right-most tile to the top right corner.</pre>
+                        <table>
+                            <tr>
+                                <td>1</td>
+                                <td>▯</td>
+                                <td class="filled_cell">2</td>
+                            </tr>
+                            <tr>
+                                <td>▯</td>
+                                <td>▯</td>
+                                <td>▯</td>
+                            </tr>
+                            <tr>
+                                <td>▯</td>
+                                <td>▯</td>
+                                <td>▯</td>
+                            </tr>
+                        </table>
+                    </li>
+
+                    <li>
+                        <pre> Move the right-most tile to the tile below the top right corner.</pre>
+                        <table>
+                            <tr>
+                                <td>1</td>
+                                <td>▯</td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>▯</td>
+                                <td>▯</td>
+                                <td class="filled_cell">3</td>
+                            </tr>
+                            <tr>
+                                <td>▯</td>
+                                <td>▯</td>
+                                <td>▯</td>
+                            </tr>
+                        </table>
+                    </li>
+
+                    <li>
+                        <pre> Move the second right-most tile to its place, then the right-most tile to its correct place.</pre>
+                        <table>
+                            <tr>
+                                <td>1</td>
+                                <td class="filled_cell">2</td>
+                                <td class="filled_cell">3</td>
+                            </tr>
+                            <tr>
+                                <td>▯</td>
+                                <td>▯</td>
+                                <td>▯</td>
+                            </tr>
+                            <tr>
+                                <td>▯</td>
+                                <td>▯</td>
+                                <td>▯</td>
+                            </tr>
+                        </table>
+                    </li>
+
+                </ol>
+            </div>
+        </div>
+        <h3 id="part2"> Part 2: Solving the Leftmost Column</h3>
+
+        <p> Now to solve the leftmost row we basically follow the same steps as in Part 1, only vertically
+            instead of horizontally. For the first step in our example we won't have to move any tiles, but if it were a
+            4×4 puzzle, we would still have to place some tiles in this step.</p>
+
+        <div class="window" style="margin: 32px; width: 60rem">
+            <div class="title-bar">
+                <div class="title-bar-text">Sliding Puzzle Algorithm: Solving The Leftmost Row.</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <ol>
+                    <li>
+                        <pre> Solve the leftmost row apart from the 2 bottom tiles.</pre>
+                        <table>
+                            <tr>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+
+                            </tr>
+
+                            <tr>
+                                <td>▯</td>
+                                <td>▯</td>
+                                <td>▯</td>
+                            </tr>
+                            <tr>
+                                <td>▯</td>
+                                <td>▯</td>
+                                <td>▯</td>
+                            </tr>
+
+                        </table>
+
+                    </li>
+                    <li>
+                        <pre> <b>If</b> the bottom-left tile is somewhere in the leftmost column, move it to another column.</pre>
+                    </li>
+
+                    <li>
+                        <pre> Move the second to last bottom tile to the left bottom corner.</pre>
+                        <table>
+                            <tr>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>▯</td>
+                                <td>▯</td>
+                                <td>▯</td>
+                            </tr>
+                            <tr>
+                                <td class="filled_cell">4</td>
+                                <td>▯</td>
+                                <td>▯</td>
+                            </tr>
+                        </table>
+                    </li>
+
+                    <li>
+                        <pre> Move the right-most tile to the tile right of the bottom left corner.</pre>
+                        <table>
+                            <tr>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td>▯</td>
+                                <td>▯</td>
+                                <td>▯</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td class="filled_cell">7</td>
+                                <td>▯</td>
+                            </tr>
+                        </table>
+                    </li>
+
+                    <li>
+                        <pre> Move the second right-most tile to its place, then the right-most tile to its correct place.</pre>
+                        <table>
+                            <tr>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td class="filled_cell">4</td>
+                                <td>▯</td>
+                                <td>▯</td>
+                            </tr>
+                            <tr>
+                                <td class="filled_cell">7</td>
+                                <td>▯</td>
+                                <td>▯</td>
+                            </tr>
+                        </table>
+                    </li>
+
+                </ol>
+            </div>
+        </div>
+        <h3 id="part3">Part 3: Finishing up</h3>
+        <p>
+            Just keep following the steps in part 1 and part 2 until you get to the puzzle of size 3x3. You may find
+            yourself getting in a bit of trouble once you get to part 2 of the algorithm for a 3×3 puzzle, you have to
+            skip step 1 as there are only 2 tiles to place. After solving this part you are left with a 2×2 puzzle with
+            only 3 tiles. This should basically solve itself.
+        </p>
+
+        <p>
+            If you want to try out this algorithm, you can go to <a href="https://im-a-puzzle.com/">im-a-puzzle.com</a>,
+            don't forget to select "Slide" as your Game mode.
+        </p>
+    </main>
+</body>
+
+</html>
