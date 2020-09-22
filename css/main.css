@@ -1,8 +1,25 @@
-﻿body {
+﻿@font-face {
+    font-family: NunitoSansReg;
+    src: url(fonts/NunitoSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: NunitoSansBold;
+    src: url(fonts/NunitoSans-Bold.ttf);
+}
+
+@font-face {
+    font-family: GillSans;
+    src: url(fonts/GillSans.ttf);
+}
+
+body {
     margin: 0;
     padding: 0;
     /* background: #c0c0c0; */
     background: #d49ddf;
+    font-size: 17px;
+    font-family: NunitoSans;
 
 }
 
@@ -36,6 +53,7 @@ aside .tree-view {
 
 h1 {
     margin: 12px 0;
+    font-family: GillSans;
 }
 
 hr {
@@ -55,6 +73,7 @@ hr {
 }
 
 h2 {
+    font-family: NunitoSansBold;
     margin-bottom: 12px;
 }
 
