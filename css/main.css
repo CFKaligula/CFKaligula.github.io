@@ -2,14 +2,19 @@
     margin: 0;
     padding: 0;
     /* background: #c0c0c0; */
-    background: #ad9e97;
+    background: #d49ddf;
 
 }
 
 main {
-    width: 80rem;
+    /*width: 80rem;*/
     margin-left: 240px;
     margin-bottom: 60px;
+    margin-top: 32px;
+    margin-right: 32px;
+    padding: 0px 1em 1em 1em;
+    background-color: #fffe;
+    box-shadow: 10px 10px;
 }
 
 aside {
