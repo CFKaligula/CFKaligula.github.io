@@ -96,6 +96,19 @@ p {
     line-height: 1.5;
 }
 
+
+
+th,
+td {
+    padding: 5px 15px 5px 15px;
+    text-align: center;
+}
+
+
+.alt {
+    background-color: #e0bed9;
+}
+
 .component {
     display: flex;
     margin-top: 24px;
